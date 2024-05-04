@@ -7,4 +7,6 @@ urlpatterns = [
     path('book/',views.book,name="book"),
     path('menu/',views.menu,name="menu"),
     path('menu_item/<int:id>',views.display_menu_item,name="menu_item"),
+    path('menu-items', views.MenuItemsView.as_view()),
+    path('menu-items/<int:pk>', views.SingleMenuItemView.as_view()),
 ]
