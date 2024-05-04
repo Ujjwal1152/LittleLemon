@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import menu
+from .models import Menu
 from .forms import BookingForm
 # Create your views here.
 def index(request):
@@ -18,4 +18,14 @@ def book(request):
     return render(request,'book.html',context)
 
 def menu(request):
-    pass
+    menu_data = Menu.objects.all()
+    main_data = {'menu': menu_data}
+    return render(request,'menu.html',{'menu':main_data})
+    
+    
+def display_menu_item(request,id=None):
+    if id:
+        menu_item = Menu.objects.get(id=id)
+    else:
+        menu_item = ""
+    return render(request,'menu_item.html',{'menu_item':menu_item})
